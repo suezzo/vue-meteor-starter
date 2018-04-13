@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "extends": "vue",
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+  },
+  "plugins": ["html"],
+  "settings": {
+    "html/html-extensions": [".vue"]
+  }
+}
