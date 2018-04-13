@@ -1,22 +1,27 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import { Meteor } from 'meteor/meteor'
+import Vue from 'vue'
+import { RouterFactory, nativeScrollBehavior } from 'meteor/akryum:vue-router2'
 
-import './main.html';
+import App from '/imports/ui/App.vue'
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+const router = new RouterFactory({
+  mode: 'history',
+  scrollBehavior: nativeScrollBehavior,
+  linkActiveClass: '',
+  linkExactActiveClass: ''
+})
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+Meteor.startup(() => {
+  const createdRouter = router.create()
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+  createdRouter.beforeEach((to, from, next) => {
+    // Scroll to the top of page on route change
+    window.scrollTo(0, 0)
+    next()
+  })
+
+  new Vue({
+    router: createdRouter,
+    render: h => h(App)
+  }).$mount('app')
+})
