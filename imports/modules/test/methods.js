@@ -10,6 +10,10 @@ export const methods = {
       console.log('client')
     }
 
+    if (param === 'throws') {
+      throw new Meteor.Error('test')
+    }
+
     return param
   }
 }

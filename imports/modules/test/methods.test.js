@@ -16,10 +16,15 @@ describe('Test.methods', function () {
       Method = require('./methods.js').methods['test/create']
     })
 
-    it('test', function () {
+    it('success', function () {
       const result = Method('test')
-
       assert.equal(result, 'test')
+    })
+
+    it('throws', function () {
+      assert.throws(() => {
+        Method('throws')
+      }, Meteor.Error('test'))
     })
   })
 })

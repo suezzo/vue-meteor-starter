@@ -19,6 +19,16 @@ const newCollection = () => {
   return collection
 }
 
+const errorFunction = (error, reason, details) => {
+  const func = function (error, reason, details) {
+    if (error) this.error = error;
+    if (reason) this.reason = reason;
+    if (details) this.details = details;
+  }
+
+  return func(error, reason, details)
+}
+
 // Meteor core
 // XXX very incomplete - check API and add more
 const Meteor = td.object(['call', 'publish', 'setTimeout', 'methods'])
@@ -37,7 +47,12 @@ Object.assign(Meteor, {
   },
   isClient: false,
   isServer: true,
-  users: newCollection()
+  users: newCollection(),
+  Error: function (error, reason, details) {
+    if (error) this.error = error;
+    if (reason) this.reason = reason;
+    if (details) this.details = details;
+  }
 })
 
 const EmailController = td.object(['actionInfo'])
