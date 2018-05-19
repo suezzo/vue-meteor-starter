@@ -9,5 +9,24 @@
   "plugins": ["html"],
   "settings": {
     "html/html-extensions": [".vue"]
+  },
+    "globals": {
+    "it": false,
+    "describe": false,
+    "beforeEach": false,
+    "meteorInstall": false,
+    "LoggedInMixin": false,
+    "Meteor": false,
+    "$": false,
+    "jQuery": false,
+    "Job": false,
+    "swal": false,
+    "Tracker": false,
+    "FastRender": false,
+    "Package": false,
+    "Npm": false,
+    "_": false,
+    "Roles": false,
+    "location": false
   }
 }
