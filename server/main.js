@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor'
+import startup from '/imports/server/startup.js'
 
-Meteor.startup(() => {
-  // code to run on server at startup
-})
+import '/imports/server/modules'
+
+Meteor.startup(startup)
