@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home Page</h1>
+    <h1>Home P age</h1>
     <button @click="testMethod('test')">Test method</button>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
   import { Meteor } from 'meteor/meteor'
   import '/imports/modules/test/methods'
-  
+
   export default {
     methods: {
       testMethod (param) {

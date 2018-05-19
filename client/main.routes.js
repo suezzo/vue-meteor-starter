@@ -1,7 +1,3 @@
-export default [
-  {
-    path: '/',
-    name: 'home',
-    component: './ui/pages/HomePage.vue'
-  }
-]
+import Routes from '/imports/modules/router'
+
+export default Routes
