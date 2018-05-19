@@ -17,13 +17,13 @@ describe('Test.methods', function () {
     })
 
     it('success', function () {
-      const result = Method('test')
+      const result = Method({ param: 'test' })
       assert.equal(result, 'test')
     })
 
     it('throws', function () {
       assert.throws(() => {
-        Method('throws')
+        Method({ param: 'throws' })
       }, Meteor.Error('test'))
     })
   })
