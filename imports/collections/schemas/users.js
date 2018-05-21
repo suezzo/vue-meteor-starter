@@ -12,7 +12,7 @@ import SimpleSchema from 'simpl-schema'
  */
 
 /**
- * @name Test
+ * @name TaxSettings
  * @memberof schemas
  * @type {SimpleSchema}
  * @property {String} exemptionNo optional
