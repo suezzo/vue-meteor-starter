@@ -16,6 +16,7 @@ import SimpleSchema from 'simpl-schema'
  * @memberof schemas
  * @type {SimpleSchema}
  * @property {String} exemptionNo optional
+ * @property {String} customerUsageType optional
  */
 
 export const Test = new SimpleSchema({
