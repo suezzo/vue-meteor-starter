@@ -20,3 +20,7 @@ akryum:vue-component
 akryum:vue-sass
 akryum:vue-router2
 static-html
+aldeed:collection2-core
+accounts-base
+accounts-password
+alanning:roles
