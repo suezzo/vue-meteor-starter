@@ -5,6 +5,7 @@ module.exports = (wallaby) => {
     testFramework: 'mocha',
     files: [
       { pattern: '/imports/.test-suite/mocks.js', instrument: false },
+      { pattern: '/imports/.test-suite/factories/*.js', instrument: false },
       '/imports/.factories.js',
       '/packages/**/*.js',
       '/imports/controllers/*.js',
