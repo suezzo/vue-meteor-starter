@@ -12,8 +12,14 @@ describe('Test.methods', function () {
   })
 
   describe('test/create', function () {
+    let Methods
+
     beforeEach(function () {
-      Method = require('./methods.js').methods['test/create']
+      Methods = require('./methods.js').methods
+      _.extendOwn(Methods, { userId: null })
+      Method = function (params) {
+        Methods['orders/new'](params)
+      }
     })
 
     it('success', function () {
@@ -24,7 +30,7 @@ describe('Test.methods', function () {
     it('throws', function () {
       assert.throws(() => {
         Method({ param: 'throws' })
-      }, Meteor.Error('test'))
+      }, /test/)
     })
   })
 })
