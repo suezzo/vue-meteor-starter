@@ -49,23 +49,37 @@ Object.assign(Meteor, {
   isServer: true,
   users: newCollection(),
   Error: function (error, reason, details) {
-    if (error) this.error = error;
-    if (reason) this.reason = reason;
-    if (details) this.details = details;
+    throw new Error(error, reason, details)
   }
 })
 
 const EmailController = td.object(['actionInfo'])
 
 const Mongo = td.object(['Collection', 'Cursor', 'ObjectID'])
-const moment = td.function()
+
+const unix = td.function()
+const isAfter = td.function()
+const moment = function () {
+  return {
+    unix,
+    isAfter
+  }
+}
+
 
 const Email = td.object(['send'])
 
 const Accounts = td.object(['sendVerificationEmail'])
 const HTTP = td.object(['call', 'post', 'get'])
-const Roles = td.object(['addUsersToRoles'])
+const Roles = td.object(['addUsersToRoles', 'userIsInRole'])
 const Job = td.constructor(['after', 'save'])
+
+const Checks = {
+  loggedIn: td.function(),
+  inRole: td.function()
+}
+
+const Log = td.object(['new'])
 
 module.exports = {
   Meteor,
@@ -76,7 +90,9 @@ module.exports = {
   Email,
   EmailController,
   Job,
+  Checks,
   Roles,
   createCursor,
-  newCollection
+  newCollection,
+  Log
 }
